@@ -39,10 +39,10 @@ Dunno. If someone out there wants to try it and tell us what is necessary, we'll
 
 ##Getting Started:
 
-1 Get an Application ID from [Blitline.com](http://www.blitline.com) (it's free!)
-2 Copy the bconvert file in this repo to your /usr/bin directory
-3 chmod 755 /usr/bin/bconvert
-4 export BLITLINE_APP_ID=<YOUR APP ID from step 1)
+1. Get an Application ID from [Blitline.com](http://www.blitline.com) (it's free!)
+2. Copy the bconvert file in this repo to your /usr/bin directory
+3. chmod 755 /usr/bin/bconvert
+4. export BLITLINE_APP_ID=<YOUR APP ID from step 1)
 
 <br/>
 
