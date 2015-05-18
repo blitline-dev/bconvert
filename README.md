@@ -24,33 +24,30 @@ Use bconvert as you would use convert. Parameters should match directly to conve
 
 ##Installation:
 
--Mac-
+####Mac
 
 brew install python
 
--Linux-
+####Linux
 
 Should just work. Might have to install 'requests' (sudo apt-get install pip && pip install requests) on old distributions
 
--PC-
+####PC
 
 Dunno. If someone out there wants to try it and tell us what is necessary, we'll update these here instructions.
 
 
 ##Getting Started:
 
-- Copy the bconvert file in this repo to your /usr/bin directory
-- chmod 755 /usr/bin/bconvert
+1 Get an Application ID from [Blitline.com](http://www.blitline.com) (it's free!)
+2 Copy the bconvert file in this repo to your /usr/bin directory
+3 chmod 755 /usr/bin/bconvert
+4 export BLITLINE_APP_ID=<YOUR APP ID from step 1)
 
-
-You MUST have a [Blitline.com](http://www.blitline.com) subscription (developer accounts are FREE!)
-
-Once you have a Blitline account, you will have a Blitline Application ID.
-
-On your system, set the environment variable BLITLINE_APP_ID to be your Blitline Application ID.
+<br/>
 
 Now, you should be able to just run the examples above.
 
-bconvert rose: -set label "rose with a label" output.png
+		bconvert rose: -set label "rose with a label" output.png
 
 <br/>
