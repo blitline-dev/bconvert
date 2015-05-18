@@ -1,0 +1,73 @@
+#!/usr/bin/env python
+
+import json
+import requests
+import os
+import sys
+import urllib
+import pipes
+
+sys_args = sys.argv
+if len(sys_args) > 0:
+    sys_args.pop(0)
+
+# Build argument string to pass to convert function
+args = ' '.join(sys_args).replace("(","\\(").replace(")","\\)")
+print(args)
+
+# Get Blitline Application ID
+app_id = os.environ.get('BLITLINE_APP_ID', None)
+if app_id is None:
+    print "You must have BLITLINE_APP_ID as an environment variable"
+    exit(1)
+
+# Force output to be output.png, weak check
+if "output.png" not in args:
+    print "You must have an output.png as output file"
+    exit(1)
+
+# Build json to submit
+json_hash = {
+    "json": {
+        "application_id": app_id,
+        "src": "https://s3.amazonaws.com/blitdoc/gifs/1x1.gif",
+        "longpoll" : True,
+        "v" : 1.21,
+        "functions": [
+            {
+                "name": "script",
+                "params": {
+                    "bash_string": "convert " + args
+                },
+                "save": {
+                    "extension": ".png",
+                    "image_identifier": "MY_CLIENT_ID"
+                }
+            }
+        ]
+    }
+}
+
+# Get results
+payload = json.dumps(json_hash)
+headers = {'Content-Type': 'application/json'}
+r = requests.post("http://www.blitline.com/job", allow_redirects=True, data=payload, headers=headers)
+j = json.loads(r.text)
+
+print(r.text)
+# Handle error, kinda
+if j["results"] is not None and ("images" in j["results"]) and j["results"]["images"][0]["s3_url"] is not None :
+    dest_url = j["results"]["images"][0]["s3_url"]
+else:
+    print("Error Results")
+    print(j)
+    print("--------------")
+    print(j["results"]["error"])
+    print("--------------")
+    exit(1)
+
+# Download output locally
+if dest_url is not None:
+    testfile = urllib.URLopener()
+    testfile.retrieve(dest_url, "output.png")
+
