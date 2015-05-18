@@ -1,12 +1,10 @@
 ### bconvert
 
-<br/>
-
 A utility script to use Blitline as if you were just using ImageMagick's convert from the command line. You can use this on a machine that has NO image processing libraries installed. That's right, you don't need to install anything!*
 
 <br/>
 
-\*not entirely true... You need linux and perl installed. Most default distros come with this out of the box, so just fire up an AWS instance, or DigitalOcean and run imagemagick convert commands without ever intsalling anything else.
+\* *not entirely true*... You need linux and python installed. Most default distros come with this out of the box, so just fire up an AWS instance, or DigitalOcean and run imagemagick convert commands without ever intsalling anything else.
 
 <br/>
 
