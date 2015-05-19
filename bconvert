@@ -13,7 +13,6 @@ if len(sys_args) > 0:
 
 # Build argument string to pass to convert function
 args = ' '.join(sys_args).replace("(","\\(").replace(")","\\)")
-print(args)
 
 # Get Blitline Application ID
 app_id = os.environ.get('BLITLINE_APP_ID', None)
