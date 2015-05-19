@@ -53,7 +53,6 @@ headers = {'Content-Type': 'application/json'}
 r = requests.post("http://www.blitline.com/job", allow_redirects=True, data=payload, headers=headers)
 j = json.loads(r.text)
 
-print(r.text)
 # Handle error, kinda
 if j["results"] is not None and ("images" in j["results"]) and j["results"]["images"][0]["s3_url"] is not None :
     dest_url = j["results"]["images"][0]["s3_url"]
